@@ -1,15 +1,36 @@
 import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex } from "@chakra-ui/react";
+import { useRef } from "react";
 import { FaUpload } from "react-icons/fa";
 
 const Index = () => {
+  const fileInputRef = useRef(null);
+
+  const handleUploadClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      // Implement the file upload logic here
+      console.log("File selected:", file.name);
+    }
+  };
+
   return (
     <Container maxW="container.xl" height="100vh" display="flex" flexDirection="column" p={0}>
       <Box id="navbar-container" width="90%" mx="auto" display="flex" alignItems="center">
         <Box as="nav" width="100%" bg="gray.100" p={4} boxShadow="md">
           <Flex justifyContent="flex-end">
-            <Button leftIcon={<FaUpload />} colorScheme="blue" size="lg">
+            <Button leftIcon={<FaUpload />} colorScheme="blue" size="lg" onClick={handleUploadClick}>
               Upload Document
             </Button>
+          <input
+              type="file"
+              ref={fileInputRef}
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
           </Flex>
         </Box>
       </Box>
