@@ -1,18 +1,30 @@
-// Update this page (the content is just a fallback if you fail and example)
-// Use chakra-ui
-import { Container, Text, VStack } from "@chakra-ui/react";
-
-// Example of using react-icons
-// import { FaRocket } from "react-icons/fa";
-// <IconButton aria-label="Add" icon={<FaRocket />} size="lg" />; // IconButton would also have to be imported from chakra
+import { Container, Box, Text, VStack, HStack, Button, IconButton } from "@chakra-ui/react";
+import { FaUpload } from "react-icons/fa";
 
 const Index = () => {
   return (
-    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-      <VStack spacing={4}>
-        <Text fontSize="2xl">Your Blank Canvas</Text>
-        <Text>Chat with the agent to start making edits.</Text>
-      </VStack>
+    <Container maxW="container.xl" height="100vh" display="flex" flexDirection="column" p={0}>
+      <Box as="nav" width="100%" bg="gray.100" p={4} boxShadow="md">
+        <HStack justifyContent="center">
+          <Button leftIcon={<FaUpload />} colorScheme="blue" size="lg">
+            Upload Document
+          </Button>
+        </HStack>
+      </Box>
+      <HStack spacing={4} justifyContent="center" alignItems="flex-start" flex="1" p={4}>
+        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md">
+          <Text fontSize="xl" fontWeight="bold" mb={4}>
+            Educational Text
+          </Text>
+          {/* Content for the left container */}
+        </Box>
+        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md">
+          <Text fontSize="xl" fontWeight="bold" mb={4}>
+            Essence
+          </Text>
+          {/* Content for the right container */}
+        </Box>
+      </HStack>
     </Container>
   );
 };
