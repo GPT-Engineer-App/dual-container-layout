@@ -4,12 +4,14 @@ import { FaUpload } from "react-icons/fa";
 const Index = () => {
   return (
     <Container maxW="container.xl" height="100vh" display="flex" flexDirection="column" p={0}>
-      <Box as="nav" width="100%" bg="gray.100" p={4} boxShadow="md">
-        <Flex justifyContent="flex-end">
-          <Button leftIcon={<FaUpload />} colorScheme="blue" size="lg">
-            Upload Document
-          </Button>
-        </Flex>
+      <Box id="navbar-container" width="90%" mx="auto" display="flex" alignItems="center">
+        <Box as="nav" width="100%" bg="gray.100" p={4} boxShadow="md">
+          <Flex justifyContent="flex-end">
+            <Button leftIcon={<FaUpload />} colorScheme="blue" size="lg">
+              Upload Document
+            </Button>
+          </Flex>
+        </Box>
       </Box>
       <HStack spacing={4} justifyContent="center" alignItems="flex-start" flex="1" p={4}>
         <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md">
