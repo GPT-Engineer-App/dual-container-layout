@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { FaPaperPlane } from "react-icons/fa";
-import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading } from "@chakra-ui/react";
+import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading, Input } from "@chakra-ui/react";
 import { FaUpload } from "react-icons/fa";
 
 const Index = () => {
