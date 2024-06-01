@@ -16,7 +16,7 @@ const Index = () => {
 
   return (
     <Container maxW="container.xl" height="100vh" display="flex" flexDirection="column" p={0}>
-      <Box id="navbar-container" width="90%" mx="auto" display="flex" alignItems="center">
+      <Box id="navbar-container" width="100%" mx="auto" display="flex" alignItems="center">
         <Box as="nav" width="100%" bg="gray.100" p={4} boxShadow="md">
           <Flex justifyContent="flex-end">
             <Button leftIcon={<FaUpload />} colorScheme="blue" size="lg" onClick={handleUploadClick}>
