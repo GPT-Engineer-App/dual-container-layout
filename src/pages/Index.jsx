@@ -91,14 +91,12 @@ const Index = () => {
           </Text>
           {/* Content for the left container */}
         </Box>
-        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh" display="flex" flexDirection="column" justifyContent="space-between">
-          <Box>
-            <Text fontSize="xl" fontWeight="bold" mb={4}>
-              Essence
-            </Text>
-            {/* Content for the right container */}
-          </Box>
-          <Box mt={4}>
+        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh" display="flex" flexDirection="column" justifyContent="flex-start">
+          <Text fontSize="xl" fontWeight="bold" mb={4}>
+            Essence
+          </Text>
+          {/* Content for the right container */}
+          <Box mt="auto">
             <InputGroup>
               <Input
                 placeholder="Type your text here..."
