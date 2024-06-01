@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
-import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading } from "@chakra-ui/react";
-import { FaUpload } from "react-icons/fa";
+import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading, Input } from "@chakra-ui/react";
+import { FaUpload, FaPaperPlane } from "react-icons/fa";
 
 const Index = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
+  const [inputText, setInputText] = useState("");
   const fileInputRef = useRef(null);
   const toast = useToast();
 
@@ -27,7 +28,7 @@ const Index = () => {
           status: "success",
           duration: 3000,
           isClosable: true,
-          position: "top-middle", // Change this line
+          position: "top-middle",
         });
       } catch (error) {
         setUploadStatus("error");
@@ -36,7 +37,7 @@ const Index = () => {
           status: "error",
           duration: 3000,
           isClosable: true,
-          position: "top-middle", // Change this line
+          position: "top-middle",
         });
       }
     }
@@ -44,6 +45,16 @@ const Index = () => {
 
   const handleUploadClick = () => {
     fileInputRef.current.click();
+  };
+
+  const handleInputChange = (event) => {
+    setInputText(event.target.value);
+  };
+
+  const handleSendClick = () => {
+    console.log("Text sent:", inputText);
+    // Clear the input field after sending
+    setInputText("");
   };
 
   return (
@@ -74,16 +85,35 @@ const Index = () => {
         </Box>
       </Box>
       <HStack spacing={4} justifyContent="center" alignItems="flex-start" flex="1" p={4}>
-        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh">
+        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh" overflowY="auto">
           <Text fontSize="xl" fontWeight="bold" mb={4}>
             Educational Text
           </Text>
-          {/* Content for the left container */}
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </Text>
         </Box>
         <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh">
           <Text fontSize="xl" fontWeight="bold" mb={4}>
             Essence
           </Text>
+          <HStack>
+            <Input
+              value={inputText}
+              onChange={handleInputChange}
+              placeholder="Type your text here..."
+              size="md"
+            />
+            <IconButton
+              icon={<FaPaperPlane />}
+              colorScheme="blue"
+              onClick={handleSendClick}
+              aria-label="Send text"
+            />
+          </HStack>
           {/* Content for the right container */}
         </Box>
       </HStack>
