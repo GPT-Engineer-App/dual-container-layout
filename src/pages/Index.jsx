@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading } from "@chakra-ui/react";
-import { FaUpload } from "react-icons/fa";
+import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { FaUpload, FaPaperPlane } from "react-icons/fa";
 
 const Index = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -85,6 +85,18 @@ const Index = () => {
             Essence
           </Text>
           {/* Content for the right container */}
+          <Box mt={4}>
+            <InputGroup>
+              <Input placeholder="Type your text here..." />
+              <InputRightElement>
+                <IconButton
+                  aria-label="Send"
+                  icon={<FaPaperPlane />}
+                  colorScheme="blue"
+                />
+              </InputRightElement>
+            </InputGroup>
+          </Box>
         </Box>
       </HStack>
     </Container>
