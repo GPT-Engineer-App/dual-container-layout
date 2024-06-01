@@ -91,7 +91,7 @@ const Index = () => {
           </Text>
           {/* Content for the left container */}
         </Box>
-        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh">
+        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh" display="flex" flexDirection="column">
           <Text fontSize="xl" fontWeight="bold" mb={4}>
             Essence
           </Text>
