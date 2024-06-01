@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
-import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading } from "@chakra-ui/react";
-import { FaUpload } from "react-icons/fa";
+import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading, Input } from "@chakra-ui/react";
+import { FaUpload, FaPaperPlane } from "react-icons/fa";
 
 const Index = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
+  const [essenceText, setEssenceText] = useState("");
   const fileInputRef = useRef(null);
   const toast = useToast();
 
@@ -27,7 +28,7 @@ const Index = () => {
           status: "success",
           duration: 3000,
           isClosable: true,
-          position: "top-middle", // Change this line
+          position: "top-middle",
         });
       } catch (error) {
         setUploadStatus("error");
@@ -36,7 +37,7 @@ const Index = () => {
           status: "error",
           duration: 3000,
           isClosable: true,
-          position: "top-middle", // Change this line
+          position: "top-middle",
         });
       }
     }
@@ -44,6 +45,16 @@ const Index = () => {
 
   const handleUploadClick = () => {
     fileInputRef.current.click();
+  };
+
+  const handleEssenceTextChange = (event) => {
+    setEssenceText(event.target.value);
+  };
+
+  const handleSendEssenceText = () => {
+    // Logic to handle sending the essence text
+    console.log("Essence text sent:", essenceText);
+    setEssenceText(""); // Clear the input after sending
   };
 
   return (
@@ -84,6 +95,20 @@ const Index = () => {
           <Text fontSize="xl" fontWeight="bold" mb={4}>
             Essence
           </Text>
+          <HStack>
+            <Input
+              value={essenceText}
+              onChange={handleEssenceTextChange}
+              placeholder="Type your essence text here..."
+              size="md"
+            />
+            <IconButton
+              icon={<FaPaperPlane />}
+              colorScheme="blue"
+              onClick={handleSendEssenceText}
+              aria-label="Send essence text"
+            />
+          </HStack>
           {/* Content for the right container */}
         </Box>
       </HStack>
