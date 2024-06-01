@@ -28,7 +28,7 @@ const Index = () => {
           status: "success",
           duration: 3000,
           isClosable: true,
-          position: "top-middle", // Change this line
+          position: "top",
         });
       } catch (error) {
         setUploadStatus("error");
@@ -37,7 +37,7 @@ const Index = () => {
           status: "error",
           duration: 3000,
           isClosable: true,
-          position: "top-middle", // Change this line
+          position: "top",
         });
       }
     }
