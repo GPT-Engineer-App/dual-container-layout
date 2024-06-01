@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
-import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading } from "@chakra-ui/react";
-import { FaUpload } from "react-icons/fa";
+import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { FaUpload, FaPaperPlane } from "react-icons/fa";
 
 const Index = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
+  const [essenceText, setEssenceText] = useState("");
   const fileInputRef = useRef(null);
   const toast = useToast();
 
@@ -42,6 +43,12 @@ const Index = () => {
     }
   };
 
+  const handleSendClick = () => {
+    console.log("Essence Text:", essenceText);
+    // Add your logic here to handle the essence text
+    setEssenceText(""); // Clear the input after sending
+  };
+
   const handleUploadClick = () => {
     fileInputRef.current.click();
   };
@@ -74,13 +81,34 @@ const Index = () => {
         </Box>
       </Box>
       <HStack spacing={4} justifyContent="center" alignItems="flex-start" flex="1" p={4}>
-        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh">
+        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh" overflowY="auto">
           <Text fontSize="xl" fontWeight="bold" mb={4}>
             Educational Text
           </Text>
           {/* Content for the left container */}
         </Box>
         <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh">
+          <Text fontSize="xl" fontWeight="bold" mb={4}>
+            Essence
+          </Text>
+          <VStack spacing={4}>
+            <InputGroup>
+              <Input
+                placeholder="Type your essence here..."
+                value={essenceText}
+                onChange={(e) => setEssenceText(e.target.value)}
+              />
+              <InputRightElement width="4.5rem">
+                <IconButton
+                  icon={<FaPaperPlane />}
+                  colorScheme="blue"
+                  onClick={handleSendClick}
+                  aria-label="Send essence"
+                />
+              </InputRightElement>
+            </InputGroup>
+            {/* Other content for the right container */}
+          </VStack>
           <Text fontSize="xl" fontWeight="bold" mb={4}>
             Essence
           </Text>
