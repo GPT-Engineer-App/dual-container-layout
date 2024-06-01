@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
-import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading } from "@chakra-ui/react";
-import { FaUpload } from "react-icons/fa";
+import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { FaUpload, FaPaperPlane } from "react-icons/fa";
 
 const Index = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
+  const [textInput, setTextInput] = useState("");
   const fileInputRef = useRef(null);
   const toast = useToast();
 
@@ -27,7 +28,7 @@ const Index = () => {
           status: "success",
           duration: 3000,
           isClosable: true,
-          position: "top-middle", // Change this line
+          position: "top",
         });
       } catch (error) {
         setUploadStatus("error");
@@ -36,7 +37,7 @@ const Index = () => {
           status: "error",
           duration: 3000,
           isClosable: true,
-          position: "top-middle", // Change this line
+          position: "top",
         });
       }
     }
@@ -44,6 +45,16 @@ const Index = () => {
 
   const handleUploadClick = () => {
     fileInputRef.current.click();
+  };
+
+  const handleTextInputChange = (event) => {
+    setTextInput(event.target.value);
+  };
+
+  const handleSendClick = () => {
+    console.log("Text input value:", textInput);
+    // Add any additional logic for handling the send action here
+    setTextInput(""); // Clear the input after sending
   };
 
   return (
@@ -85,6 +96,23 @@ const Index = () => {
             Essence
           </Text>
           {/* Content for the right container */}
+          <Box mt="auto">
+            <InputGroup>
+              <Input
+                placeholder="Type your text here..."
+                value={textInput}
+                onChange={handleTextInputChange}
+              />
+              <InputRightElement>
+                <IconButton
+                  aria-label="Send"
+                  icon={<FaPaperPlane />}
+                  onClick={handleSendClick}
+                  colorScheme="blue"
+                />
+              </InputRightElement>
+            </InputGroup>
+          </Box>
         </Box>
       </HStack>
     </Container>
