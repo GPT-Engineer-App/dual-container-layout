@@ -1,13 +1,43 @@
 import { useState, useRef } from "react";
-import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex } from "@chakra-ui/react";
+import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast } from "@chakra-ui/react";
 import { FaUpload } from "react-icons/fa";
 
 const Index = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadStatus, setUploadStatus] = useState(null);
   const fileInputRef = useRef(null);
+  const toast = useToast();
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+        setUploadStatus("uploading");
+        // Simulate file upload
+        await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate a 2-second upload time
+
+        setUploadStatus("success");
+        toast({
+          title: "File uploaded successfully.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      } catch (error) {
+        setUploadStatus("error");
+        toast({
+          title: "File upload failed.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+    }
   };
 
   const handleUploadClick = () => {
@@ -21,7 +51,7 @@ const Index = () => {
           <Flex justifyContent="center">
             <Box id="nav_content" width="90%">
               <Flex justifyContent="flex-end">
-                <Button leftIcon={<FaUpload />} colorScheme="blue" size="lg" onClick={handleUploadClick}>
+                <Button leftIcon={<FaUpload />} colorScheme="blue" size="lg" onClick={handleUploadClick} isLoading={uploadStatus === "uploading"}>
                   Upload Document
                 </Button>
                 <input
