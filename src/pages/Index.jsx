@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { FaPaperPlane } from "react-icons/fa";
 import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading } from "@chakra-ui/react";
 import { FaUpload } from "react-icons/fa";
 
@@ -6,6 +7,12 @@ const Index = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
   const fileInputRef = useRef(null);
+  const [essenceText, setEssenceText] = useState("");
+
+  const handleSendEssenceText = () => {
+    // Logic to handle sending the essence text
+    console.log("Essence text sent:", essenceText);
+  };
   const toast = useToast();
 
   const handleFileChange = async (event) => {
@@ -81,10 +88,23 @@ const Index = () => {
           {/* Content for the left container */}
         </Box>
         <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh">
-          <Text fontSize="xl" fontWeight="bold" mb={4}>
-            Essence
-          </Text>
-          {/* Content for the right container */}
+          <VStack spacing={4}>
+            <Text fontSize="xl" fontWeight="bold" mb={4}>
+              Essence
+            </Text>
+            <HStack width="100%">
+              <Input
+                placeholder="Type your text here..."
+                value={essenceText}
+                onChange={(e) => setEssenceText(e.target.value)}
+              />
+              <IconButton
+                icon={<FaPaperPlane />}
+                colorScheme="blue"
+                onClick={handleSendEssenceText}
+              />
+            </HStack>
+          </VStack>
         </Box>
       </HStack>
     </Container>
