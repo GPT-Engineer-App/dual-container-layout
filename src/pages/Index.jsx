@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast } from "@chakra-ui/react";
+import { Container, Box, Text, VStack, HStack, Button, IconButton, Flex, useToast, Heading } from "@chakra-ui/react";
 import { FaUpload } from "react-icons/fa";
 
 const Index = () => {
@@ -50,19 +50,22 @@ const Index = () => {
         <Box as="nav" width="100%" bg="gray.100" p={4} boxShadow="md">
           <Flex justifyContent="center">
             <Box id="nav_content" width="90%">
-              <Flex justifyContent="flex-end">
-                <Button leftIcon={<FaUpload />} colorScheme="blue" size="lg" onClick={handleUploadClick} isLoading={uploadStatus === "uploading"}>
-                  Upload Document
-                </Button>
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  style={{ display: "none" }}
-                  onChange={handleFileChange}
-                />
-                {selectedFile && (
-                  <Text mt={2}>Selected file: {selectedFile.name}</Text>
-                )}
+              <Flex justifyContent="space-between" alignItems="center">
+                <Heading as="h1" size="lg">learning-extractor</Heading>
+                <Flex justifyContent="flex-end">
+                  <Button leftIcon={<FaUpload />} colorScheme="blue" size="lg" onClick={handleUploadClick} isLoading={uploadStatus === "uploading"}>
+                    Upload Document
+                  </Button>
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    style={{ display: "none" }}
+                    onChange={handleFileChange}
+                  />
+                  {selectedFile && (
+                    <Text mt={2}>Selected file: {selectedFile.name}</Text>
+                  )}
+                </Flex>
               </Flex>
             </Box>
           </Flex>
