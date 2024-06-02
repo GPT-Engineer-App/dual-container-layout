@@ -96,25 +96,27 @@ const Index = () => {
             Essence
           </Text>
           {/* Content for the right container */}
-          <Box mt="auto">
-            <InputGroup>
-              <Input
-                placeholder="Type your text here..."
-                value={textInput}
-                onChange={handleTextInputChange}
-              />
-              <InputRightElement>
-                <IconButton
-                  aria-label="Send"
-                  icon={<FaPaperPlane />}
-                  onClick={handleSendClick}
-                  colorScheme="blue"
-                />
-              </InputRightElement>
-            </InputGroup>
-          </Box>
         </Box>
       </HStack>
+      <Flex justifyContent="center" mt="auto" p={4}>
+        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md">
+          <InputGroup>
+            <Input
+              placeholder="Type your text here..."
+              value={textInput}
+              onChange={handleTextInputChange}
+            />
+            <InputRightElement>
+              <IconButton
+                aria-label="Send"
+                icon={<FaPaperPlane />}
+                onClick={handleSendClick}
+                colorScheme="blue"
+              />
+            </InputRightElement>
+          </InputGroup>
+        </Box>
+      </Flex>
     </Container>
   );
 };
