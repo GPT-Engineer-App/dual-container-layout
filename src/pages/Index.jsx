@@ -85,13 +85,13 @@ const Index = () => {
         </Box>
       </Box>
       <HStack spacing={4} justifyContent="center" alignItems="flex-start" flex="1" p={4}>
-        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh">
+        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="80vh">
           <Text fontSize="xl" fontWeight="bold" mb={4}>
             Educational Text
           </Text>
           {/* Content for the left container */}
         </Box>
-        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="50vh">
+        <Box width="45%" bg="gray.50" p={4} boxShadow="md" borderRadius="md" minHeight="80vh">
           <Text fontSize="xl" fontWeight="bold" mb={4}>
             Essence
           </Text>
